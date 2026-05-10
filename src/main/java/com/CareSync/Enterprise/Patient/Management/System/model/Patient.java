@@ -22,6 +22,6 @@ public class Patient {
 
     private Integer age;
     private String email_id;
-    private Stirng medicalHistory;
+    private String medicalHistory;
 
 }
