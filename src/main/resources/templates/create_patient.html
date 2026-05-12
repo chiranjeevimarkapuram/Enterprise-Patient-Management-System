@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>CareSync - Register Patient</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>Register New Patient</h2>
+
+    <hr>
+
+    <form th:action="@{/patients/save}"
+          th:object="${patient}"
+          method="POST"
+          style="max-width: 500px;">
+
+        <!-- Patient Name -->
+        <div class="mb-3">
+
+            <label class="form-label">Full Name</label>
+
+            <input type="text"
+                   th:field="*{patientName}"
+                   class="form-control">
+
+            <div th:if="${#fields.hasErrors('patientName')}"
+                 th:errors="*{patientName}"
+                 class="text-danger">
+            </div>
+
+        </div>
+
+        <!-- Age -->
+        <div class="mb-3">
+
+            <label class="form-label">Age</label>
+
+            <input type="number"
+                   th:field="*{age}"
+                   class="form-control">
+
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+
+            <label class="form-label">Email Address</label>
+
+            <input type="email"
+                   th:field="*{emailId}"
+                   class="form-control">
+
+            <div th:if="${#fields.hasErrors('emailId')}"
+                 th:errors="*{emailId}"
+                 class="text-danger">
+            </div>
+
+        </div>
+
+        <!-- Medical History -->
+        <div class="mb-3">
+
+            <label class="form-label">Medical History</label>
+
+            <textarea th:field="*{medicalHistory}"
+                      class="form-control"
+                      rows="3"></textarea>
+
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit"
+                class="btn btn-success">
+            Save Patient
+        </button>
+
+        <a th:href="@{/patients}"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>
