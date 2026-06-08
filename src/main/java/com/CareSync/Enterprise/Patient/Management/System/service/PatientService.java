@@ -32,6 +32,7 @@ public class PatientService {
                         new RuntimeException("Patient not found with id: " + id));
     }
 
+
     // Delete patient
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);

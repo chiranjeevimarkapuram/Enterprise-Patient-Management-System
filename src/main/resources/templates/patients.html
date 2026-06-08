@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>CareSync - Patient Directory</title>
+    <title>Patient List</title>
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -12,18 +12,12 @@
 
 <div class="container mt-5">
 
-    <h2 class="mb-4 text-center">CareSync Patient Directory</h2>
+    <h2>CareSync Patient Directory</h2>
 
-    <div class="d-flex justify-content-end mb-3">
-
-        <a th:href="@{/patients/new}"
-           class="btn btn-primary">
-            Register New Patient
-        </a>
-
-    </div>
-
-    <table class="table table-bordered table-striped table-hover">
+    <a th:href="@{/patients/new}" class="btn btn-primary">
+    Register New Patient
+</a>
+    <table class="table table-bordered table-striped">
 
         <thead class="table-dark">
 
@@ -44,27 +38,25 @@
 
             <td th:text="${patient.id}"></td>
 
-            <td th:text="${patient.patientName}"></td>
+            <td th:text="${patient.name}"></td>
 
             <td th:text="${patient.age}"></td>
 
-            <td th:text="${patient.emailId}"></td>
+            <td th:text="${patient.email}"></td>
 
             <td th:text="${patient.medicalHistory}"></td>
 
             <td>
-
                 <a th:href="@{/patients/edit/{id}(id=${patient.id})}"
                    class="btn btn-warning btn-sm">
-                    Update
+                    Edit
                 </a>
+
 
                 <a th:href="@{/patients/delete/{id}(id=${patient.id})}"
-                   class="btn btn-danger btn-sm"
-                   onclick="return confirm('Are you sure you want to delete this patient?')">
+                   class="btn btn-danger btn-sm">
                     Delete
                 </a>
-
             </td>
 
         </tr>

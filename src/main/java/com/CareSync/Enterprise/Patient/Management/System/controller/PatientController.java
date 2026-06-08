@@ -52,23 +52,20 @@ public class PatientController {
     }
 
     // Edit form
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(
-            @PathVariable Long id,
-            Model model) {
+    @GetMapping("/patients/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
 
-        model.addAttribute("patient",
-                patientService.getPatientById(id));
+        Patient patient = patientService.getPatientById(id);
 
-        return "update_patient";
+        model.addAttribute("patient", patient);
+
+        return "edit-patient";
     }
 
     // Delete patient
     @GetMapping("/delete/{id}")
     public String deletePatient(@PathVariable Long id) {
-
         patientService.deletePatient(id);
-
         return "redirect:/patients";
     }
 }
